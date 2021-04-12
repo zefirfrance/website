@@ -33,7 +33,6 @@ for (var i = 0; i < cookieArr.length; i++) {
 	var cookieidentifier = cookiePair[0].trim();
 	if (cookieidentifier == componentForm[0]) {
 		HomeAddress.push(decodeURIComponent(cookiePair[1]));
-    alert(decodeURIComponent(cookiePair[1]))
 		break;
 	}
 }
@@ -42,7 +41,6 @@ for (var i = 0; i < cookieArr.length; i++) {
 	var cookieidentifier = cookiePair[0].trim();
 	if (cookieidentifier == componentForm[1]) {
 		HomeAddress.push(decodeURIComponent(cookiePair[1]));
-    alert(decodeURIComponent(cookiePair[1]))
 		break;
 	}
 }
@@ -51,7 +49,6 @@ for (var i = 0; i < cookieArr.length; i++) {
 	var cookieidentifier = cookiePair[0].trim();
 	if (cookieidentifier == componentForm[2]) {
 		HomeAddress.push(decodeURIComponent(cookiePair[1]));
-    alert(decodeURIComponent(cookiePair[1]))
 		break;
 	}
 }
@@ -60,7 +57,6 @@ for (var i = 0; i < cookieArr.length; i++) {
 	var cookieidentifier = cookiePair[0].trim();
 	if (cookieidentifier == componentForm[3]) {
 		HomeAddress.push(decodeURIComponent(cookiePair[1]));
-    alert(decodeURIComponent(cookiePair[1]))
 		break;
 	}
 }
@@ -69,7 +65,6 @@ for (var i = 0; i < cookieArr.length; i++) {
 	var cookieidentifier = cookiePair[0].trim();
 	if (cookieidentifier == componentForm[4]) {
 		HomeAddress.push(decodeURIComponent(cookiePair[1]));
-    alert(decodeURIComponent(cookiePair[1]))
 		break;
 	}
 }
@@ -78,7 +73,6 @@ for (var i = 0; i < cookieArr.length; i++) {
 	var cookieidentifier = cookiePair[0].trim();
 	if (cookieidentifier == componentForm[5]) {
 		HomeAddress.push(decodeURIComponent(cookiePair[1]));
-    alert(decodeURIComponent(cookiePair[1]))
 		break;
 	}
 }
