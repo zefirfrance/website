@@ -183,6 +183,7 @@ function fillInAddress() {
         var homecookie = addressType + "=" + val;
         var path = "path=/"
         document.cookie = homecookie + ';' + path;
+        alert(homecookie + ';' + path)
       }
     }
     window.location.assign("https://zefir-4f7ae76c36850c72251-c11aa8e2cbacb.webflow.io/offre/demande");
@@ -206,6 +207,7 @@ function fillInAddress_2() {
         var homecookie = addressType + "=" + val;
         var path = "path=/"
         document.cookie = homecookie + ';' + path;
+        alert(homecookie + ';' + path)
       }
     }
     window.location.assign("https://zefir-4f7ae76c36850c72251-c11aa8e2cbacb.webflow.io/offre/demande");
@@ -268,7 +270,7 @@ $(function(){
   var autocomplete = new google.maps.places.Autocomplete(pac_input, autocompleteOptions);
 });
 
-$( document ).ready(function() {
+$(document).ready(function() {
   jQuery(function($) {
     $lis = $('.faq-item-sc'); 
     min = 3;
