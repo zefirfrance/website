@@ -63,6 +63,8 @@ async function DuplicateAirtableRecord(asktype){
   var self = this
   var recordID = document.getElementById('Record_ID').innerHTML;
   this.items = []
+  
+  alert("I went there bro")
 
   var airtable_url = 'https://api.airtable.com/v0/' + 'appNvBdQ4vqLJGmuO' + '/' + 'Estimation' 
   var airtable_url_get = airtable_url + '?filterByFormula=' + 'ID' + '=' + '"' + recordID + '"';
@@ -130,16 +132,22 @@ function makeid(length) {
 };
 
 $(document).ready(function() {
-  $(".buttonreevaluation").click(function() {
+  $("#buttonreevaluation").click(function() {
     DuplicateAirtableRecord("Réévaluation demandée");
-    $("#Top-bas").hide();
-    $("#Message-remerciement").show();
+    $(".top-basse").hide();
+    $(".badge-text").html("Demande reçue");
+    $(".text-space-left").html("Merci pour votre retour d'expérience.")
   });
-  $(".buttonexpired").click(function() {
+  $("#buttonexpired").click(function() {
     DuplicateAirtableRecord("Nouvelle offre demandée");
-    $("#Pas-interesse").hide();
-    $("#Message-remerciement").show();
   });
+});
+$("#offre-button").on('click', function() {
+  var value = document.querySelector('input[name="raison"]:checked').value;
+  Setreevaluationanddeclined("declined", "none", value, "none")
+  $("#Pas-interesse").hide();
+  $(".badge-text").html("Demande reçue");
+  $(".text-space-left").html("Merci pour votre retour d'expérience.")
   $('#grp_option').on('change', function () {
     showLabel();
   });
@@ -149,6 +157,7 @@ function showLabel() {
   var selected = $('#grp_option :selected');
   var item = selected.text();
   var group = selected.parent().attr('label');
+  alert(item)
 }
 
 function Setreevaluationanddeclined(type, new_info, radioValue, ID) {
@@ -207,6 +216,7 @@ var FloorsHouse = document.getElementById("FloorsHouse").innerHTML
 $(document).ready(function() {
   $(".id-calendly").on('click', function() {
     Calendly.showPopupWidget('https://calendly.com/zefir/introduction')
+    $(".choix-oui").hide();
   });
   if (parseInt(getBrowserSize().width) > 991 && parseInt(getBrowserSize().width) < 1150) {
     $("#map").hide();
@@ -291,6 +301,7 @@ rangeSlider.noUiSlider.on('update', function(values, handle) {
     document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
     document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
     document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
+    document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
   } else if (value > 400 && value <= 600) {
     var costguarantee = 0.075;
     var costagent = 0.05;
@@ -301,6 +312,7 @@ rangeSlider.noUiSlider.on('update', function(values, handle) {
     document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
     document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
     document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
+    document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
   } else {
     var costguarantee = 0.07;
     var costagent = 0.05;
@@ -311,6 +323,7 @@ rangeSlider.noUiSlider.on('update', function(values, handle) {
     document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
     document.getElementById('cost-of-service-3').innerHTML = parseFloat((costagent * 100).toString()).toFixed(1).replace('.', ',') + "%";
     document.getElementById('margin-of-negotiation-3').innerHTML = parseFloat((costmargeofnegotiation * 100).toString()).toFixed(1).replace('.', ',') + "%";
+    document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
   }
 });
 
