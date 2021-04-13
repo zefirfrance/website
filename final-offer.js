@@ -22,6 +22,12 @@ function hideLoader() {
   });
 }
 
+$(document).ready(function() {
+  $(".id-calendly").on('click', function() {
+    Calendly.showPopupWidget('https://calendly.com/zefir/offre-finale')
+  });
+});
+
 var valuation = Number(document.getElementById('value-new').innerHTML.replace(/€| /g, ""));
 var est_final_sale_price = Math.round(valuation/1000);
 var max = Math.round(est_final_sale_price * 1.2);
