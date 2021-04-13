@@ -15,24 +15,18 @@ object_2.addEventListener("click", ErrorMessage);
 object_3.addEventListener("click", ErrorMessage);
 
 function ErrorMessage() {
-if (!document.getElementById("autocomplete").value.match(/^\d/)) {
-  document.getElementById("card-body-2").style.display = 'block';
-  setTimeout(function(){
-    document.getElementById("card-body-2").style.display = 'none';
-  }, 5000);
-}
-if (!document.getElementById("autocomplete_2").value.match(/^\d/)) {
-  document.getElementById("card-body-2").style.display = 'block';
-  setTimeout(function(){
-    document.getElementById("card-body-2").style.display = 'none';
-  }, 5000);
-}
-  if (!document.getElementById("autocomplete_3").value.match(/^\d/)) {
-  document.getElementById("card-body-2").style.display = 'block';
-  setTimeout(function(){
-    document.getElementById("card-body-2").style.display = 'none';
-  }, 5000);
-}
+  if (!document.getElementById("autocomplete").value.match(/^\d/)) {
+    document.getElementById("card-body-2").style.display = 'block';
+    setTimeout(function(){
+      document.getElementById("card-body-2").style.display = 'none';
+    }, 5000);
+  }
+  if (!document.getElementById("autocomplete_2").value.match(/^\d/)) {
+    document.getElementById("card-body-2").style.display = 'block';
+    setTimeout(function(){
+      document.getElementById("card-body-2").style.display = 'none';
+    }, 5000);
+  }
 }
 
 var counter = 0;
@@ -206,11 +200,12 @@ function patternMatching_3() {
   // Addresses must to start with a number
   var x = document.getElementById("autocomplete_3").value;
   if (!$("#autocomplete_3").val()) {
-    initAutocomplete_2();
+    initAutocomplete_3();
   } else if (!x.match(/^\d/)) {
     $(".pac-container").remove();
   }
 }
+
 
 function fillInAddress() {
   // Get the place details from the autocomplete object.
@@ -280,7 +275,7 @@ function fillInAddress_3() {
 
 var pac_input = document.getElementById('autocomplete');
 var pac_input_2 = document.getElementById('autocomplete_2');
-var pac_input_3 = document.getElementById('autocomplete_3');
+var pac_input_2 = document.getElementById('autocomplete_3');
 
 (function pacSelectFirst(input){
   // store the original event binding function
@@ -289,6 +284,7 @@ var pac_input_3 = document.getElementById('autocomplete_3');
   function addEventListenerWrapper(type, listener) {
     // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
     // and then trigger the original listener.
+
     if (type == "keydown") {
       var orig_listener = listener;
       listener = function (event) {
@@ -309,28 +305,29 @@ var pac_input_3 = document.getElementById('autocomplete_3');
             orig_listener.apply(input, [event]);
           }
         }
-        if (!suggestion_selected && document.getElementById("autocomplete_3").value.match(/^\d/)) {
-          var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40});
-          var event = $.Event("enter", {keyCode:13, which:13})
-          orig_listener.apply(input, [simulated_downarrow]);
-          orig_listener.apply(input, [event]);
+        document.getElementById('goingnext_3').onclick = function() {
+          if (!suggestion_selected && document.getElementById("autocomplete_3").value.match(/^\d/)) {
+            var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40});
+            var event = $.Event("enter", {keyCode:13, which:13})
+            orig_listener.apply(input, [simulated_downarrow]);
+            orig_listener.apply(input, [event]);
+          }
         }
-      }
-      if (event.which == 13 && !suggestion_selected && document.getElementById("autocomplete").value.match(/^\d/)) {
-        var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40})
-        orig_listener.apply(input, [simulated_downarrow]);
-      }
-      orig_listener.apply(input, [event]);
-    };
+        if (event.which == 13 && !suggestion_selected && document.getElementById("autocomplete").value.match(/^\d/)) {
+          var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40})
+          orig_listener.apply(input, [simulated_downarrow]);
+        }
+        orig_listener.apply(input, [event]);
+      };
+    }
+    // add the modified listener
+    _addEventListener.apply(input, [type, listener]);
   }
-  // add the modified listener
-  _addEventListener.apply(input, [type, listener]);
-}
 
- if (input.addEventListener)
-input.addEventListener = addEventListenerWrapper;
-else if (input.attachEvent)
-  input.attachEvent = addEventListenerWrapper;
+  if (input.addEventListener)
+    input.addEventListener = addEventListenerWrapper;
+  else if (input.attachEvent)
+    input.attachEvent = addEventListenerWrapper;
 
 })(pac_input);
 
