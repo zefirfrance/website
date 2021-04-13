@@ -18,25 +18,27 @@ function hideLoader() {
 Checkreevaluationanddeclined();
 
 async function Checkreevaluationanddeclined(){
-  
+
   var self = this
   var column_name = 'ID';
   var recordID = document.getElementById('Record_ID').innerHTML;
   this.items = []
-  
+
   var airtable_url = 'https://api.airtable.com/v0/' + 'appNvBdQ4vqLJGmuO' + '/' + 'Estimation' + '?filterByFormula=' + column_name + '=' + '"' + recordID + '"';
-  
+
   const response = await axios.get(webhook_url, { params: {'url': airtable_url}})
-  
+
   var checkifofferrefused = JSON.stringify(response.data.records[0].fields.Decline)
   var checkifreevaluationasked = JSON.stringify(response.data.records[0].fields.Reevaluation)
-  
+
   if (checkifofferrefused == '"Yes"') {
-    $("#to-hide").hide();
+    $("#to-hide-1").hide();
+    $("#to-hide-2").hide();
   } else if (checkifreevaluationasked == '"Yes"') {
-    $("#to-hide").hide();
+    $("#to-hide-1").hide();
+    $("#to-hide-2").hide();
   }
-  
+
 };
 
 // Patch airtable record
@@ -63,8 +65,6 @@ async function DuplicateAirtableRecord(asktype){
   var self = this
   var recordID = document.getElementById('Record_ID').innerHTML;
   this.items = []
-  
-  alert("I went there bro")
 
   var airtable_url = 'https://api.airtable.com/v0/' + 'appNvBdQ4vqLJGmuO' + '/' + 'Estimation' 
   var airtable_url_get = airtable_url + '?filterByFormula=' + 'ID' + '=' + '"' + recordID + '"';
@@ -116,7 +116,7 @@ async function DuplicateAirtableRecord(asktype){
   var new_data = {'fields':{'Stage' :'Doublon (reevaluation)'}}
 
   var new_airtable_url = "https://api.airtable.com/v0/appNvBdQ4vqLJGmuO/Estimation/" + new_ID
-  
+
   axios.patch(webhook_url, {'url': new_airtable_url,'json_data': new_data})
 
 };
@@ -137,28 +137,24 @@ $(document).ready(function() {
     $(".top-basse").hide();
     $(".badge-text").html("Demande reçue");
     $(".text-space-left").html("Merci pour votre retour d'expérience.")
+    $("#to-hide-1").hide();
+    $("#to-hide-2").hide();
   });
+
   $("#buttonexpired").click(function() {
     DuplicateAirtableRecord("Nouvelle offre demandée");
   });
 });
+
 $("#offre-button").on('click', function() {
   var value = document.querySelector('input[name="raison"]:checked').value;
   Setreevaluationanddeclined("declined", "none", value, "none")
   $("#Pas-interesse").hide();
   $(".badge-text").html("Demande reçue");
   $(".text-space-left").html("Merci pour votre retour d'expérience.")
-  $('#grp_option').on('change', function () {
-    showLabel();
-  });
+  $("#to-hide-1").hide();
+  $("#to-hide-2").hide();
 });
-
-function showLabel() {
-  var selected = $('#grp_option :selected');
-  var item = selected.text();
-  var group = selected.parent().attr('label');
-  alert(item)
-}
 
 function Setreevaluationanddeclined(type, new_info, radioValue, ID) {
 
@@ -194,21 +190,21 @@ $(document).ready(function() {
   const date = new Date($('#date').html());
   const today = new Date();
   const expiring_date = new Date(moment(date).add(8, 'days'));
-  
+
   let options = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   }
-  
+
   $('#date').html(" " + expiring_date.toLocaleString('fr-FR', options));
-  
+
   if (today > expiring_date) {
     $(".Main-Offre-Sc").hide();
     $(".Main-Offre-Sc-Expire").show();
   }
-  
+
 });
 
 var FloorsHouse = document.getElementById("FloorsHouse").innerHTML
