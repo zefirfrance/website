@@ -71,8 +71,6 @@ async function DuplicateAirtableRecord(asktype){
   const response = await axios.get(webhook_url, { params: {'url': airtable_url_get}})
 
   var data_post = response.data
-  
-  alert(JSON.stringify(data_post))
 
   delete data_post.records[0].id
   delete data_post.records[0].createdTime
@@ -151,7 +149,6 @@ function showLabel() {
   var selected = $('#grp_option :selected');
   var item = selected.text();
   var group = selected.parent().attr('label');
-  alert(item)
 }
 
 function Setreevaluationanddeclined(type, new_info, radioValue, ID) {
@@ -209,7 +206,6 @@ var FloorsHouse = document.getElementById("FloorsHouse").innerHTML
 
 $(document).ready(function() {
   $(".id-calendly").on('click', function() {
-  	alert("I went there bro")
     Calendly.showPopupWidget('https://calendly.com/zefir/introduction')
   });
   if (parseInt(getBrowserSize().width) > 991 && parseInt(getBrowserSize().width) < 1150) {
