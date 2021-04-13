@@ -64,6 +64,7 @@ async function DuplicateAirtableRecord(asktype){
 
   var self = this
   var recordID = document.getElementById('Record_ID').innerHTML;
+  
   this.items = []
 
   var airtable_url = 'https://api.airtable.com/v0/' + 'appNvBdQ4vqLJGmuO' + '/' + 'Estimation' 
