@@ -83,7 +83,7 @@ var list_postal_codes = ['59491', '59262', '59800', '59112', '59237', '59200', '
 
 $(document).ready(function() {
   if (!(list_postal_codes.includes(region))) {
-	$(location).attr('href', 'https://www.wevesta.com/offre/non-eligible');
+	$(location).attr('href', 'https://www.zefir.fr/offre/ineligible');
   }
 });
 
