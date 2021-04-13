@@ -146,7 +146,7 @@ document.cookie = name + "=" + value + expires + "; path=/";
 // place, then it retrieves the address components associated with that
 // place, and then it populates the form fields with those details.
 
-var placeSearch, autocomplete;
+var placeSearch, autocomplete_2;
 
 var componentForm = {
 street_number: 'short_name',
@@ -168,15 +168,15 @@ var options = {
   componentRestrictions: {country: 'fr'},
 };
 
-autocomplete = new google.maps.places.Autocomplete(input, options);
+autocomplete_2 = new google.maps.places.Autocomplete(input, options);
 
 // Avoid paying for data that you don't need by restricting the set of
 // place fields that are returned to just the address components.
-autocomplete.setFields(['address_component']);
+autocomplete_2.setFields(['address_component']);
 
 // When the user selects an address from the drop-down, save the
 // address fields in local storage.
-autocomplete.addListener('place_changed', fillInAddress_2);
+autocomplete_2.addListener('place_changed', fillInAddress_2);
 }
 
 function patternMatching_2() {
