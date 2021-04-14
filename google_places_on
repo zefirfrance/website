@@ -64,7 +64,7 @@ function initAutocomplete_4() {
 
   // When the user selects an address from the drop-down, save the
   // address fields in local storage.
-  autocomplete.addListener('place_changed', fillInAddress);
+  autocomplete.addListener('place_changed', fillInAddress_4);
 }
 
 function patternMatching_4() {
@@ -92,7 +92,6 @@ function fillInAddress_4() {
         var homecookie = addressType + "=" + val;
         var path = "path=/"
         document.cookie = homecookie + ';' + path;
-        alert(homecookie + ';' + path)
       }
     }
     window.location.assign("https://zefir.fr/offre/demande");
