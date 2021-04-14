@@ -364,7 +364,7 @@ $(document).ready(function() {
 
     $('.load-more').click(function(e) {
       e.preventDefault();
-      visible = visible + 2;
+      visible = visible + 5;
       disableButtons();  
       showUpToIndex(visible);
     });
