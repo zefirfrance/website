@@ -370,3 +370,17 @@ $(document).ready(function() {
     });
   });
 });
+
+$(document).ready(function(){
+  $(window).scroll(function(){
+  	var isFocused =  $("#autocomplete_2").is(":focus") 
+  	if (isFocused == true){
+    //Set new top to autocomplete dropdown
+    newTop = $('#autocomplete_2').offset().top + $('#autocomplete_2').outerHeight();
+    $('.pac-container').css('top', newTop + 'px');
+    }
+  })
+  $('#autocomplete_2').blur(function(){
+    $('.pac-container').css('top', '0px');
+  })
+});
