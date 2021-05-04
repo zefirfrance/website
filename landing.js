@@ -206,8 +206,8 @@ function patternMatching_3() {
   }
 }
 
-
 function fillInAddress() {
+  var store_cookie = "";
   // Get the place details from the autocomplete object.
   if (document.getElementById("autocomplete").value.match(/^\d/)) {
     var place = autocomplete.getPlace();
@@ -216,11 +216,33 @@ function fillInAddress() {
     for (var i = 0; i < place.address_components.length; i++) {
       var addressType = place.address_components[i].types[0];
       if (componentForm[addressType]) {
-        var val = encodeURIComponent(place.address_components[i][componentForm[addressType]]);
-        // Store the home address in a cookie
-        var homecookie = addressType + "=" + val;
-        var path = "path=/"
-        document.cookie = homecookie + ';' + path;
+        if (i == 0 && place.address_components[0].types[0] != "street_number") {
+          var addressType_1 = "street_number"
+          var val_1 = "1";
+
+          var path = "path=/"
+          var homecookie = addressType_1 + "=" + val_1;
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+
+          var addressType_2 = addressType;
+          var val_2 = encodeURIComponent(place.address_components[i][componentForm[addressType]]);
+
+          var path = "path=/"
+          var homecookie = addressType_2 + "=" + val_2;
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+
+        } else {
+          var val = encodeURIComponent(place.address_components[i][componentForm[addressType]]);
+          var homecookie = addressType + "=" + val;
+          var path = "path=/"
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+        }
       }
     }
     window.location.assign("https://zefir.fr/offre/demande");
@@ -238,11 +260,33 @@ function fillInAddress_2() {
     for (var i = 0; i < place_2.address_components.length; i++) {
       var addressType = place_2.address_components[i].types[0];
       if (componentForm[addressType]) {
-        var val = encodeURIComponent(place_2.address_components[i][componentForm[addressType]]);
-        // Store the home address in a cookie
-        var homecookie = addressType + "=" + val;
-        var path = "path=/"
-        document.cookie = homecookie + ';' + path;
+        if (i == 0 && place_2.address_components[0].types[0] != "street_number") {
+          var addressType_1 = "street_number"
+          var val_1 = "1";
+
+          var path = "path=/"
+          var homecookie = addressType_1 + "=" + val_1;
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+
+          var addressType_2 = addressType;
+          var val_2 = encodeURIComponent(place_2.address_components[i][componentForm[addressType]]);
+
+          var path = "path=/"
+          var homecookie = addressType_2 + "=" + val_2;
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+
+        } else {
+          var val = encodeURIComponent(place_2.address_components[i][componentForm[addressType]]);
+          var homecookie = addressType + "=" + val;
+          var path = "path=/"
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+        }
       }
     }
     window.location.assign("https://zefir.fr/offre/demande");
@@ -260,11 +304,33 @@ function fillInAddress_3() {
     for (var i = 0; i < place_3.address_components.length; i++) {
       var addressType = place_3.address_components[i].types[0];
       if (componentForm[addressType]) {
-        var val = encodeURIComponent(place_3.address_components[i][componentForm[addressType]]);
-        // Store the home address in a cookie
-        var homecookie = addressType + "=" + val;
-        var path = "path=/"
-        document.cookie = homecookie + ';' + path;
+        if (i == 0 && place_3.address_components[0].types[0] != "street_number") {
+          var addressType_1 = "street_number"
+          var val_1 = "1";
+
+          var path = "path=/"
+          var homecookie = addressType_1 + "=" + val_1;
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+
+          var addressType_2 = addressType;
+          var val_2 = encodeURIComponent(place_3.address_components[i][componentForm[addressType]]);
+
+          var path = "path=/"
+          var homecookie = addressType_2 + "=" + val_2;
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+
+        } else {
+          var val = encodeURIComponent(place_3.address_components[i][componentForm[addressType]]);
+          var homecookie = addressType + "=" + val;
+          var path = "path=/"
+
+          document.cookie = homecookie + ';' + path;
+          store_cookie += homecookie + ';' + path;
+        }
       }
     }
     window.location.assign("https://zefir.fr/offre/demande");
@@ -373,11 +439,11 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   $(window).scroll(function(){
-  	var isFocused =  $("#autocomplete_2").is(":focus") 
-  	if (isFocused == true){
-    //Set new top to autocomplete dropdown
-    newTop = $('#autocomplete_2').offset().top + $('#autocomplete_2').outerHeight();
-    $('.pac-container').css('top', newTop + 'px');
+    var isFocused =  $("#autocomplete_2").is(":focus") 
+    if (isFocused == true){
+      //Set new top to autocomplete dropdown
+      newTop = $('#autocomplete_2').offset().top + $('#autocomplete_2').outerHeight();
+      $('.pac-container').css('top', newTop + 'px');
     }
   })
   $('#autocomplete_2').blur(function(){
