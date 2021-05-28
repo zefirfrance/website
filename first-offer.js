@@ -135,7 +135,8 @@ function makeid(length) {
 $(document).ready(function() {
   $("#buttonreevaluation").click(function() {
     DuplicateAirtableRecord("Réévaluation demandée");
-    $(".top-basse").hide();
+    $(".reevaluation-button-block").hide();
+    $(".top-basse-block-success").show();
     $(".badge-text").html("Demande reçue");
     $(".text-space-left").html("Merci pour votre retour d'expérience.")
     $("#to-hide-1").hide();
@@ -150,7 +151,6 @@ $(document).ready(function() {
 $("#offre-button").on('click', function() {
   var value = document.querySelector('input[name="raison"]:checked').value;
   Setreevaluationanddeclined("declined", "none", value, "none")
-  $("#Pas-interesse").hide();
   $(".badge-text").html("Demande reçue");
   $(".text-space-left").html("Merci pour votre retour d'expérience.")
   $("#to-hide-1").hide();
