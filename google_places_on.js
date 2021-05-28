@@ -1,8 +1,11 @@
 object_4 = document.getElementById("goingnext-4")
+object_5 = document.getElementById("goingnext-5")
 
 object_4.type = "submit"
+object_5.type = "submit"
 
 object_4.addEventListener("click", ErrorMessage);
+object_5.addEventListener("click", ErrorMessage);
 
 function ErrorMessage() {
   if (!document.getElementById("autocomplete_4").value.match(/^\d/)) {
@@ -11,7 +14,7 @@ function ErrorMessage() {
       document.getElementById("card-body-2").style.display = 'none';
     }, 5000);
   }
-  if (!document.getElementById("autocomplete_2").value.match(/^\d/)) {
+  if (!document.getElementById("autocomplete_5").value.match(/^\d/)) {
     document.getElementById("card-body-2").style.display = 'block';
     setTimeout(function(){
       document.getElementById("card-body-2").style.display = 'none';
@@ -67,12 +70,46 @@ function initAutocomplete_4() {
   autocomplete.addListener('place_changed', fillInAddress_4);
 }
 
+function initAutocomplete_5() {
+  // Create the autocomplete object, restricting the search predictions to
+  // adresses and France.
+  // Address must start with a number to start Autocomplete
+
+  var input = document.getElementById('autocomplete_5');
+
+  var options = {
+    types: ['address'],
+    componentRestrictions: {country: 'fr'},
+  };
+
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(['address_component']);
+
+  // When the user selects an address from the drop-down, save the
+  // address fields in local storage.
+  autocomplete.addListener('place_changed', fillInAddress_5);
+}
+
 function patternMatching_4() {
   // Show and Hide the Google Autocomplete based on input values
   // Addresses must to start with a number
   var x = document.getElementById("autocomplete_4").value;
   if (!$("#autocomplete_4").val()) {
     initAutocomplete_4();
+  } else if (!x.match(/^\d/)) {
+    $(".pac-container").remove();
+  }
+}
+
+function patternMatching_5() {
+  // Show and Hide the Google Autocomplete based on input values
+  // Addresses must to start with a number
+  var x = document.getElementById("autocomplete_5").value;
+  if (!$("#autocomplete_5").val()) {
+    initAutocomplete_5();
   } else if (!x.match(/^\d/)) {
     $(".pac-container").remove();
   }
@@ -100,7 +137,30 @@ function fillInAddress_4() {
   }
 }
 
+function fillInAddress_5() {
+  // Get the place details from the autocomplete object.
+  if (document.getElementById("autocomplete_5").value.match(/^\d/)) {
+    var place_5 = autocomplete.getPlace();
+    // Get each component of the address from the place details,
+    // and then fill-in the corresponding field on the cookie.
+    for (var i = 0; i < place_5.address_components.length; i++) {
+      var addressType = place_5.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = encodeURIComponent(place_5.address_components[i][componentForm[addressType]]);
+        // Store the home address in a cookie
+        var homecookie = addressType + "=" + val;
+        var path = "path=/"
+        document.cookie = homecookie + ';' + path;
+      }
+    }
+    window.location.assign("https://zefir.fr/offre/demande");
+  } else {
+    ErrorMessage();
+  }
+}
+
 var pac_input_4 = document.getElementById('autocomplete_4');
+var pac_input_5 = document.getElementById('autocomplete_5');
 
 (function pacSelectFirst(input){
   // store the original event binding function
