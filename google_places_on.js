@@ -1,14 +1,14 @@
-object_4 = document.getElementById("goingnext-4")
+object_2 = document.getElementById("goingnext-2")
 object_5 = document.getElementById("goingnext-5")
 
-object_4.type = "submit"
+object_2.type = "submit"
 object_5.type = "submit"
 
-object_4.addEventListener("click", ErrorMessage);
+object_2.addEventListener("click", ErrorMessage);
 object_5.addEventListener("click", ErrorMessage);
 
 function ErrorMessage() {
-  if (!document.getElementById("autocomplete_4").value.match(/^\d/)) {
+  if (!document.getElementById("autocomplete_2").value.match(/^\d/)) {
     document.getElementById("card-body-2").style.display = 'block';
     setTimeout(function(){
       document.getElementById("card-body-2").style.display = 'none';
@@ -47,12 +47,12 @@ var componentForm = {
   postal_code: 'short_name'
 };
 
-function initAutocomplete_4() {
+function initAutocomplete_2() {
   // Create the autocomplete object, restricting the search predictions to
   // adresses and France.
   // Address must start with a number to start Autocomplete
 
-  var input = document.getElementById('autocomplete_4');
+  var input = document.getElementById('autocomplete_2');
 
   var options = {
     types: ['address'],
@@ -67,7 +67,7 @@ function initAutocomplete_4() {
 
   // When the user selects an address from the drop-down, save the
   // address fields in local storage.
-  autocomplete.addListener('place_changed', fillInAddress_4);
+  autocomplete.addListener('place_changed', fillInAddress_2);
 }
 
 function initAutocomplete_5() {
@@ -93,12 +93,12 @@ function initAutocomplete_5() {
   autocomplete.addListener('place_changed', fillInAddress_5);
 }
 
-function patternMatching_4() {
+function patternMatching_2() {
   // Show and Hide the Google Autocomplete based on input values
   // Addresses must to start with a number
-  var x = document.getElementById("autocomplete_4").value;
-  if (!$("#autocomplete_4").val()) {
-    initAutocomplete_4();
+  var x = document.getElementById("autocomplete_2").value;
+  if (!$("#autocomplete_2").val()) {
+    initAutocomplete_2();
   } else if (!x.match(/^\d/)) {
     $(".pac-container").remove();
   }
@@ -115,16 +115,16 @@ function patternMatching_5() {
   }
 }
 
-function fillInAddress_4() {
+function fillInAddress_2() {
   // Get the place details from the autocomplete object.
-  if (document.getElementById("autocomplete_4").value.match(/^\d/)) {
-    var place_4 = autocomplete.getPlace();
+  if (document.getElementById("autocomplete_2").value.match(/^\d/)) {
+    var place_2 = autocomplete.getPlace();
     // Get each component of the address from the place details,
     // and then fill-in the corresponding field on the cookie.
-    for (var i = 0; i < place_4.address_components.length; i++) {
-      var addressType = place_4.address_components[i].types[0];
+    for (var i = 0; i < place_2.address_components.length; i++) {
+      var addressType = place_2.address_components[i].types[0];
       if (componentForm[addressType]) {
-        var val = encodeURIComponent(place_4.address_components[i][componentForm[addressType]]);
+        var val = encodeURIComponent(place_2.address_components[i][componentForm[addressType]]);
         // Store the home address in a cookie
         var homecookie = addressType + "=" + val;
         var path = "path=/"
@@ -159,7 +159,7 @@ function fillInAddress_5() {
   }
 }
 
-var pac_input_4 = document.getElementById('autocomplete_4');
+var pac_input_2 = document.getElementById('autocomplete_2');
 var pac_input_5 = document.getElementById('autocomplete_5');
 
 (function pacSelectFirst(input){
@@ -174,15 +174,15 @@ var pac_input_5 = document.getElementById('autocomplete_5');
       var orig_listener = listener;
       listener = function (event) {
         var suggestion_selected = $(".pac-item-selected").length > 0;
-        document.getElementById('goingnext-4').onclick = function() {
-          if (!suggestion_selected && document.getElementById("autocomplete_4").value.match(/^\d/)) {
+        document.getElementById('goingnext-2').onclick = function() {
+          if (!suggestion_selected && document.getElementById("autocomplete_2").value.match(/^\d/)) {
             var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40});
             var event = $.Event("enter", {keyCode:13, which:13})
             orig_listener.apply(input, [simulated_downarrow]);
             orig_listener.apply(input, [event]);
           }
         }
-        if (event.which == 13 && !suggestion_selected && document.getElementById("autocomplete_4").value.match(/^\d/)) {
+        if (event.which == 13 && !suggestion_selected && document.getElementById("autocomplete_2").value.match(/^\d/)) {
           var simulated_downarrow = $.Event("keydown", {keyCode:40, which:40})
           orig_listener.apply(input, [simulated_downarrow]);
         }
@@ -198,23 +198,23 @@ var pac_input_5 = document.getElementById('autocomplete_5');
   else if (input.attachEvent)
     input.attachEvent = addEventListenerWrapper;
 
-})(pac_input_4);
+})(pac_input_2);
 
 $(function(){
   var autocompleteOptions = { types: ['address'], componentRestrictions: { country: 'fr'}};
-  var autocomplete = new google.maps.places.Autocomplete(pac_input_4, autocompleteOptions);
+  var autocomplete = new google.maps.places.Autocomplete(pac_input_2, autocompleteOptions);
 });
 
 $(document).ready(function(){
   $(window).scroll(function(){
-  	var isFocused =  $("#autocomplete_4").is(":focus") 
+  	var isFocused =  $("#autocomplete_2").is(":focus") 
   	if (isFocused == true){
     //Set new top to autocomplete dropdown
-    newTop = $('#autocomplete_4').offset().top + $('#autocomplete_4').outerHeight();
+    newTop = $('#autocomplete_2').offset().top + $('#autocomplete_2').outerHeight();
     $('.pac-container').css('top', newTop + 'px');
     }
   })
-  $('#autocomplete_4').blur(function(){
+  $('#autocomplete_2').blur(function(){
     $('.pac-container').css('top', '0px');
   })
 });
