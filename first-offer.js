@@ -224,6 +224,9 @@ document.getElementById('type-comps').innerHTML = document.getElementById('Type'
 
 var valuation = Number(document.getElementById('value').innerHTML.replace(/€| /g, ""));
 
+# Price readjustment due to Pierre May past performance
+var valuation = valuation * 1.05
+
 var max = Math.round(valuation * 1.05 / 1000);
 var min = Math.round(valuation * 0.95 / 1000);
 
