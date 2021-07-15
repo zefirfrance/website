@@ -741,6 +741,7 @@ var dataName = [
   "windowscondition",
   "specificity",
   "loue",
+  "sellingcategory",
   "sellingdate",
   "buyingtype",
   "channel",
