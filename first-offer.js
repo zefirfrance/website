@@ -64,7 +64,7 @@ async function DuplicateAirtableRecord(asktype){
 
   var self = this
   var recordID = document.getElementById('Record_ID').innerHTML;
-  
+
   this.items = []
 
   var airtable_url = 'https://api.airtable.com/v0/' + 'appNvBdQ4vqLJGmuO' + '/' + 'Estimation' 
@@ -175,6 +175,9 @@ function Setreevaluationanddeclined(type, new_info, radioValue, ID) {
 var app_key = 'Unknown'
 
 var AddressKey = document.getElementById('AddressKey').innerHTML
+var substring = AddressKey.split(',').pop();
+var postalcode = substring.match(/(\d+)/);
+var department = postalcode[0].substring(0, 2);
 var IDKey = document.getElementById('Record_ID').innerHTML
 var Type = document.getElementById('Type').innerHTML
 
@@ -258,74 +261,148 @@ noUiSlider.create(rangeSlider, {
 rangeSlider.noUiSlider.on('update', function(values, handle) {
   var value = Math.round(values[handle])
   document.getElementById('slider-range-value').innerHTML = value.toString() + " 000 €";
-  if (value <= 130) {
-    var costguarantee = 12;
-    var costagent = 10;
-    var costmargeofnegotiation = 5;
-    var costoffre = costagent + costmargeofnegotiation;
-    document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
-    document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
-    document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
-    document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
-    document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
-    document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
-  } else if (value > 130 && value <= 140) {
-    var costguarantee = 13;
-    var costagent = 10;
-    var costmargeofnegotiation = 5;
-    var costoffre = costagent + costmargeofnegotiation;
-    document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
-    document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
-    document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
-    document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
-    document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
-    document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
-  } else if (value > 140 && value <= 175) {
-    var costguarantee = 14;
-    var costagent = 10;
-    var costmargeofnegotiation = 5;
-    var costoffre = costagent + costmargeofnegotiation;
-    document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
-    document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
-    document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
-    document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
-    document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
-    document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
-  } else if (value > 175 && value <= 400) {
-    var costguarantee = 0.08;
-    var costagent = 0.06;
-    var costmargeofnegotiation = 0.03;
-    var costoffre = costagent + costmargeofnegotiation;
-    document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
-    document.getElementById('cost-of-service-2').innerHTML = (costguarantee * 100).toString().replace('.', ',') + "%";
-    document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
-    document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
-    document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
-    document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
-  } else if (value > 400 && value <= 600) {
-    var costguarantee = 0.075;
-    var costagent = 0.05;
-    var costmargeofnegotiation = 0.035;
-    var costoffre = costagent + costmargeofnegotiation;
-    document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
-    document.getElementById('cost-of-service-2').innerHTML = (costguarantee * 100).toString().replace('.', ',') + "%";
-    document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
-    document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
-    document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
-    document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
-  } else {
-    var costguarantee = 0.07;
-    var costagent = 0.05;
-    var costmargeofnegotiation = 0.035;
-    var costoffre = costagent + costmargeofnegotiation;
-    document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
-    document.getElementById('cost-of-service-2').innerHTML = parseFloat((costguarantee * 100).toString()).toFixed(0).toString().replace('.', ',') + "%";
-    document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
-    document.getElementById('cost-of-service-3').innerHTML = parseFloat((costagent * 100).toString()).toFixed(1).replace('.', ',') + "%";
-    document.getElementById('margin-of-negotiation-3').innerHTML = parseFloat((costmargeofnegotiation * 100).toString()).toFixed(1).replace('.', ',') + "%";
-    document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
-  }
+  getservicefee(value, department);
 });
+
+function getservicefee(value,department) {
+  if (department == "59") {
+  	console.log(department);
+    if (value <= 130) {
+      var costguarantee = 12;
+      var costagent = 10;
+      var costmargeofnegotiation = 5;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
+      document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
+    } else if (value > 130 && value <= 140) {
+      var costguarantee = 13;
+      var costagent = 10;
+      var costmargeofnegotiation = 5;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
+      document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
+    } else if (value > 140 && value <= 175) {
+      var costguarantee = 14;
+      var costagent = 10;
+      var costmargeofnegotiation = 5;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
+      document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
+    } else if (value > 175 && value <= 400) {
+      var costguarantee = 0.08;
+      var costagent = 0.06;
+      var costmargeofnegotiation = 0.03;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = (costguarantee * 100).toString().replace('.', ',') + "%";
+      document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
+    } else if (value > 400 && value <= 600) {
+      var costguarantee = 0.075;
+      var costagent = 0.05;
+      var costmargeofnegotiation = 0.035;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = (costguarantee * 100).toString().replace('.', ',') + "%";
+      document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
+    } else {
+      var costguarantee = 0.07;
+      var costagent = 0.05;
+      var costmargeofnegotiation = 0.035;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = parseFloat((costguarantee * 100).toString()).toFixed(0).toString().replace('.', ',') + "%";
+      document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = parseFloat((costagent * 100).toString()).toFixed(1).replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-3').innerHTML = parseFloat((costmargeofnegotiation * 100).toString()).toFixed(1).replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
+    }}
+  if (department == "75") {
+    if (value <= 130) {
+      var costguarantee = 10;
+      var costagent = 10;
+      var costmargeofnegotiation = 5;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
+      document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
+    } else if (value > 130 && value <= 140) {
+      var costguarantee = 11;
+      var costagent = 10;
+      var costmargeofnegotiation = 5;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
+      document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
+    } else if (value > 140 && value <= 175) {
+      var costguarantee = 12;
+      var costagent = 10;
+      var costmargeofnegotiation = 5;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = costguarantee.toString().replace('.', ',') + " 000 €";
+      document.getElementById('slider-range-value-3').innerHTML = (value - costoffre).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = costagent.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-3').innerHTML = costmargeofnegotiation.toString().replace('.', ',') + " 000 €";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0 €";
+    } else if (value > 175 && value <= 400) {
+      var costguarantee = 0.06;
+      var costagent = 0.06;
+      var costmargeofnegotiation = 0.03;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = (costguarantee * 100).toString().replace('.', ',') + "%";
+      document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
+    } else if (value > 400 && value <= 600) {
+      var costguarantee = 0.06;
+      var costagent = 0.05;
+      var costmargeofnegotiation = 0.035;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = (costguarantee * 100).toString().replace('.', ',') + "%";
+      document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = (costagent * 100).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
+    } else {
+      var costguarantee = 0.055;
+      var costagent = 0.05;
+      var costmargeofnegotiation = 0.035;
+      var costoffre = costagent + costmargeofnegotiation;
+      document.getElementById('slider-range-value-2').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('cost-of-service-2').innerHTML = parseFloat((costguarantee * 100).toString()).toFixed(0).toString().replace('.', ',') + "%";
+      document.getElementById('slider-range-value-3').innerHTML = Math.round((value - (value * costoffre))).toString() + " 000 €";
+      document.getElementById('cost-of-service-3').innerHTML = parseFloat((costagent * 100).toString()).toFixed(1).replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-3').innerHTML = parseFloat((costmargeofnegotiation * 100).toString()).toFixed(1).replace('.', ',') + "%";
+      document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
+    }}
+}
 
 async function getToken(app_key, Key, url_p1, url_p2) {
   var airtable_url = url_p1 + url_p2 + Key + '"';
