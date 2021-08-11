@@ -151,7 +151,7 @@ function getservicefee(fixed_value, value,department) {
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     } else {
-      var costguarantee = 0.055;
+      var costguarantee = 0.06;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = Math.round((fixed_value / 1000) - costofservice);
       document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
