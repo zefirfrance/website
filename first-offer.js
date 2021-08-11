@@ -391,7 +391,7 @@ function getservicefee(value,department) {
       document.getElementById('margin-of-negotiation-3').innerHTML = (Math.round(costmargeofnegotiation * 1000) / 10).toString().replace('.', ',') + "%";
       document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
     } else {
-      var costguarantee = 0.055;
+      var costguarantee = 0.06;
       var costagent = 0.05;
       var costmargeofnegotiation = 0.035;
       var costoffre = costagent + costmargeofnegotiation;
