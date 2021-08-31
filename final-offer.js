@@ -114,7 +114,7 @@ function getservicefee(fixed_value, value,department) {
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     }}
-  if (department == "75") {
+  if (department == "75" || department == "92" || department == "93" || department == "94") {
     if (value <= 130) {
       var costguarantee = 10;
       var costofservice = costguarantee;
