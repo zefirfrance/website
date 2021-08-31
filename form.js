@@ -87,10 +87,6 @@ $(document).ready(function() {
   }
 });
 
-$("#house").click(function() {
-  $(location).attr('href', 'https://www.zefir.fr/offre/ineligible?ref=House');
-});
-
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
