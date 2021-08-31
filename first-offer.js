@@ -334,7 +334,7 @@ function getservicefee(value,department) {
       document.getElementById('margin-of-negotiation-3').innerHTML = parseFloat((costmargeofnegotiation * 100).toString()).toFixed(1).replace('.', ',') + "%";
       document.getElementById('margin-of-negotiation-2').innerHTML = "0%";
     }}
-  if (department == "75") {
+  if (department == "75" || department == "92" || department == "93" || department == "94") {
     if (value <= 130) {
       var costguarantee = 10;
       var costagent = 10;
