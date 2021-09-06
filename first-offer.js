@@ -215,7 +215,7 @@ var FloorsHouse = document.getElementById("FloorsHouse").innerHTML
 
 $(document).ready(function() {
   $(".id-calendly").on('click', function() {
-    Calendly.showPopupWidget('https://calendly.com/conseiller-zefir')
+    Calendly.showPopupWidget('https://calendly.com/conseiller-zefir/questions')
     $(".choix-oui").hide();
   });
   if (parseInt(getBrowserSize().width) > 991 && parseInt(getBrowserSize().width) < 1150) {
