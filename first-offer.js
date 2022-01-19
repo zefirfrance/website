@@ -227,12 +227,12 @@ document.getElementById('type-comps').innerHTML = document.getElementById('Type'
 
 var valuation = Number(document.getElementById('value').innerHTML.replace(/€| /g, ""));
 
-/// Price readjustment due to Pierre May past performance
-if (department == "59") {
-	var valuation = valuation * 1.05
-} else {
-	var valuation = valuation * 1.025
-}
+// /// Price readjustment due to Pierre May past performance
+// if (department == "59") {
+// 	var valuation = valuation * 1.05
+// } else {
+// 	var valuation = valuation * 1.025
+// }
 
 var max = Math.round(valuation * 1.05 / 1000);
 var min = Math.round(valuation * 0.95 / 1000);
