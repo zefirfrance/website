@@ -88,11 +88,11 @@ $(document).ready(function() {
   }
 });
 
-$("#house").click(function() {
-  if(department == "75" || department == "92" || department == "93" || department == "94") {
-    $(location).attr('href', 'https://www.zefir.fr/offre/ineligible?ref=House');
-  }
-});
+//$("#house").click(function() {
+  //if(department == "75" || department == "92" || department == "93" || department == "94") {
+    //$(location).attr('href', 'https://www.zefir.fr/offre/ineligible?ref=House');
+  //}
+//});
 
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
