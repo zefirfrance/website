@@ -96,21 +96,21 @@ function getservicefee(fixed_value, value,department) {
       var costguarantee = 0.08;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = fixed_value - costofservice;
-      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     } else if (value > 400 && value <= 600) {
       var costguarantee = 0.075;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = Math.round(fixed_value - costofservice);
-      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     } else {
       var costguarantee = 0.07;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = Math.round((fixed_value / 1000) - costofservice);
-      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     }}
@@ -140,21 +140,65 @@ function getservicefee(fixed_value, value,department) {
       var costguarantee = 0.06;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = fixed_value - costofservice;
-      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     } else if (value > 400 && value <= 600) {
       var costguarantee = 0.06;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = Math.round(fixed_value - costofservice);
-      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     } else {
       var costguarantee = 0.06;
       var costofservice = fixed_value * costguarantee;
       var guaranteed_net_proceed = Math.round((fixed_value / 1000) - costofservice);
-      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (value * costguarantee))).toString() + " 000 €";
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
+      document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
+      SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
+    }}
+    if (department == "44" || department == "69") {
+    if (value <= 130) {
+      var costguarantee = 11;
+      var costofservice = costguarantee;
+      var guaranteed_net_proceed = fixed_value - costguarantee;
+      document.getElementById('slider-range-value-11').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-10').innerHTML = costguarantee.toString() + " 000 €";
+      SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
+    } else if (value > 130 && value <= 145) {
+      var costguarantee = 12;
+      var costofservice = costguarantee;
+      var guaranteed_net_proceed = fixed_value - costguarantee;
+      document.getElementById('slider-range-value-11').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-10').innerHTML = costguarantee.toString() + " 000 €";
+      SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
+    } else if (value > 145 && value <= 175) {
+      var costguarantee = 13;
+      var costofservice = costguarantee;
+      var guaranteed_net_proceed = fixed_value - costguarantee;
+      document.getElementById('slider-range-value-11').innerHTML = (value - costguarantee).toString() + " 000 €";
+      document.getElementById('cost-of-service-10').innerHTML = costguarantee.toString() + " 000 €";
+      SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
+    } else if (value > 175 && value <= 400) {
+      var costguarantee = 0.07;
+      var costofservice = fixed_value * costguarantee;
+      var guaranteed_net_proceed = fixed_value - costofservice;
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
+      document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
+      SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
+    } else if (value > 400 && value <= 600) {
+      var costguarantee = 0.06;
+      var costofservice = fixed_value * costguarantee;
+      var guaranteed_net_proceed = Math.round(fixed_value - costofservice);
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
+      document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
+      SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
+    } else {
+      var costguarantee = 0.06;
+      var costofservice = fixed_value * costguarantee;
+      var guaranteed_net_proceed = Math.round((fixed_value / 1000) - costofservice);
+      document.getElementById('slider-range-value-11').innerHTML = Math.round((value - (Math.round(value * costguarantee)))).toString() + " 000 €";
       document.getElementById('cost-of-service-10').innerHTML = parseFloat((costguarantee*100).toString()).toFixed(1).toString().replace('.',',') + "%";
       SetTable(value, costguarantee, costofservice, guaranteed_net_proceed);
     }}
