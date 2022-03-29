@@ -719,7 +719,7 @@ buttonslide7.style.opacity = "0.5";
 $(document).ready(function() {
   $("#formcontentslide7").click(function() {
     var buttonslide7 = document.getElementById("buttonslide7");
-    if($("input[id='checkboxslide8']:checked").val()){
+    if($("input[id='checkboxslide8']:checked").val() || $("input[id='checkbox-norareissues']:checked").val()){
       $('#buttonslide7').prop('disabled', false);
       buttonslide7.style.color = "#FFFFFF";
       buttonslide7.style.backgroundColor = "#62b3fa";
