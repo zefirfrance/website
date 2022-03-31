@@ -297,6 +297,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#formcontentslide2").on("click keyup", function() {
+		console.log('detected')
 		if (bool1 == true && bool2 == true) {
 			$('#buttonslide2').prop('disabled', false);
 			buttonslide2.style.color = "#ffffff";
