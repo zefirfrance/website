@@ -297,25 +297,21 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#formcontentslide2").on("click keyup", function() {
-		console.log('detected')
 		if (bool1 == true && bool2 == true) {
 			$('#buttonslide2').prop('disabled', false);
 			buttonslide2.style.color = "#ffffff";
 			buttonslide2.style.backgroundColor = "#62b3fa";
 			buttonslide2.style.opacity = "1";
-			console.log('enabled')
 		} else if (bool4 == true) {
 			$('#buttonslide2').prop('disabled', false);
 			buttonslide2.style.color = "#ffffff";
 			buttonslide2.style.backgroundColor = "#62b3fa";
 			buttonslide2.style.opacity = "1";
-			console.log('enabled2')
 		} else {
 			$('#buttonslide2').prop('disabled', true);
 			buttonslide2.style.color = "#62636b";
 			buttonslide2.style.backgroundColor = "#f8f6f4";
 			buttonslide2.style.opacity = "0.5";
-			console.log('disabled')
 		}
 	});
 });
