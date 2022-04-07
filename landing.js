@@ -16,9 +16,11 @@ function useFirstPrediction($input) {
       $input.val(predictions[0].description);
 
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ placeId: predictions[0].place_id }).then((response) => {
-        createCookieAndRedirect(response.results[0]);
-      });
+      geocoder
+        .geocode({ placeId: predictions[0].place_id, componentRestrictions: { country: 'fr' } })
+        .then((response) => {
+          createCookieAndRedirect(response.results[0]);
+        });
     }
   });
 }
