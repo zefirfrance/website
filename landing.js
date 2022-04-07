@@ -1,3 +1,5 @@
+// force cache to reload
+
 $(function () {
   initAutoComplete($('#autocomplete'), $('#goingnext'));
   initAutoComplete($('#autocomplete_2'), $('#goingnext-2'));
