@@ -1,5 +1,3 @@
-// force cache to reload
-
 $(function () {
   initAutoComplete($('#autocomplete'), $('#goingnext'));
   initAutoComplete($('#autocomplete_2'), $('#goingnext-2'));
@@ -13,7 +11,7 @@ function useFirstPrediction($input) {
   }
 
   const service = new google.maps.places.AutocompleteService();
-  service.getQueryPredictions({ input: value }, function (predictions) {
+  service.getPlacePredictions({ input: value, componentRestrictions: { country: 'fr' } }, function (predictions) {
     if (predictions.length > 0) {
       $input.val(predictions[0].description);
 
