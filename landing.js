@@ -54,7 +54,7 @@ function initAutoComplete($input, $button) {
 
   $input.keypress(function (evt) {
     if (evt.which == 13) {
-      useFirstPrediction($(input));
+      useFirstPrediction($input);
       return false;
     }
   });
