@@ -46,10 +46,21 @@ function initAutoComplete($input, $button) {
 
   // When the user selects an address from the drop-down, save the
   // address fields in local storage.
-  autocomplete.addListener('place_changed', fillInAddress($input[0], autocomplete));
+  autocomplete.addListener('place_changed', function () {
+    if ($input.val().match(/^\d/)) {
+      const place = autocomplete.getPlace();
+
+      if (typeof place.address_components !== 'undefined') {
+        createCookieAndRedirect(place);
+      }
+    } else {
+      alert('Merci de préciser votre numéro de rue.');
+    }
+  });
 
   $button.on('click', function () {
     useFirstPrediction($input);
+    return false;
   });
 
   $input.keypress(function (evt) {
@@ -68,21 +79,6 @@ var componentForm = {
   country: 'long_name',
   postal_code: 'short_name',
 };
-
-function fillInAddress(input, autocomplete) {
-  return () => {
-    // Get the place details from the autocomplete object.
-    if (input.value.match(/^\d/)) {
-      var place = autocomplete.getPlace();
-
-      if (typeof place.address_components !== 'undefined') {
-        createCookieAndRedirect(place);
-      }
-    } else {
-      alert('Merci de préciser votre numéro de rue.');
-    }
-  };
-}
 
 function createCookieAndRedirect(place) {
   // Get each component of the address from the place details,
