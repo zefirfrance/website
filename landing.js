@@ -6,7 +6,12 @@ $(function () {
 
 function useFirstPrediction($input) {
   const value = $input.val();
-  if (value === '' || !value.match(/^\d/)) {
+  if (value === '') {
+    return;
+  }
+
+  if (!value.match(/^\d/)) {
+    alert('Merci de préciser votre numéro de rue.');
     return;
   }
 
@@ -46,6 +51,13 @@ function initAutoComplete($input, $button) {
   $button.on('click', function () {
     useFirstPrediction($input);
   });
+
+  $input.keypress(function (evt) {
+    if (evt.which == 13) {
+      useFirstPrediction($(input));
+      return false;
+    }
+  });
 }
 
 var componentForm = {
@@ -63,11 +75,11 @@ function fillInAddress(input, autocomplete) {
     if (input.value.match(/^\d/)) {
       var place = autocomplete.getPlace();
 
-      if (typeof place.address_components === 'undefined') {
-        useFirstPrediction($(input));
-      } else {
+      if (typeof place.address_components !== 'undefined') {
         createCookieAndRedirect(place);
       }
+    } else {
+      alert('Merci de préciser votre numéro de rue.');
     }
   };
 }
