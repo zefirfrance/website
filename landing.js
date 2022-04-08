@@ -4,6 +4,16 @@ $(function () {
   initAutoComplete($('#autocomplete_3'), $('#goingnext-3'));
 });
 
+let showError = true;
+
+function displayError() {
+  if (showError) {
+    showError = false;
+    alert('Merci de préciser votre numéro de rue.');
+    setTimeout(() => (showError = true), 1000);
+  }
+}
+
 function useFirstPrediction($input) {
   const value = $input.val();
   if (value === '') {
@@ -11,7 +21,7 @@ function useFirstPrediction($input) {
   }
 
   if (!value.match(/^\d/)) {
-    alert('Merci de préciser votre numéro de rue.');
+    displayError();
     return;
   }
 
@@ -54,7 +64,7 @@ function initAutoComplete($input, $button) {
         createCookieAndRedirect(place);
       }
     } else {
-      alert('Merci de préciser votre numéro de rue.');
+      displayError();
     }
   });
 
