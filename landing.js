@@ -140,4 +140,6 @@ function createCookieAndRedirect(place) {
       }
     }
   }
+
+  window.location.pathname = "/offre/demande";
 }
