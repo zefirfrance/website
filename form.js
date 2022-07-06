@@ -1163,10 +1163,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  const landingPageFocus = document.cookie
-    .split(";")
-    .map((item) => item.trim().split("="))
-    .find((pair) => pair[0] === "landingPageFocus")[1];
+  const landingPageFocus = localStorage.getItem("landingPageFocus");
 
   if (!landingPageFocus) {
     return;

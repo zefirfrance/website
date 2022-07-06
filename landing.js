@@ -2,15 +2,15 @@ $(function () {
   initAutoComplete($("#autocomplete"), $("#goingnext"));
   initAutoComplete($("#autocomplete_2"), $("#goingnext-2"));
   initAutoComplete($("#autocomplete_3"), $("#goingnext-3"));
-  storeCookieForLandingPageABTesting();
+  storeDataForLandingPageABTesting();
 });
 
-function storeCookieForLandingPageABTesting() {
+function storeDataForLandingPageABTesting() {
   var landingPageFocus = { s: "certainty", v: "speed" }[
     location.pathname.split("/")[1]
   ];
   if (landingPageFocus) {
-    document.cookie = "landingPageFocus=" + landingPageFocus + "; path=/";
+    localStorage.setItem("landingPageFocus", landingPageFocus);
   }
 }
 
