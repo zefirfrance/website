@@ -411,6 +411,7 @@ var list_postal_codes = [
   "69800",
   "69890",
   "69960",
+  "33170", // bordeaux (added for experiment with Christophe)
 ];
 
 $(document).ready(function () {
