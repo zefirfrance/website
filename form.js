@@ -411,12 +411,13 @@ var list_postal_codes = [
   "69800",
   "69890",
   "69960",
+  // Bordeaux deployment is currently postponed
   // "33000",
-  "33170",
+  // "33170",
   // "33200",
   // "33270",
   // "33300",
-  "33700",
+  // "33700",
 ];
 
 $(document).ready(function () {
