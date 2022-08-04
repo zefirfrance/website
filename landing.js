@@ -141,5 +141,5 @@ function createCookieAndRedirect(place) {
     }
   }
 
-  window.location.pathname = "/offre/demande";
+  window.location.pathname = "/offre/demande/v2";
 }

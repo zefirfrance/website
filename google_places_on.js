@@ -131,7 +131,7 @@ function fillInAddress_2() {
         document.cookie = homecookie + ';' + path;
       }
     }
-    window.location.assign("https://zefir.fr/offre/demande");
+    window.location.assign("https://zefir.fr/offre/demande/v2");
   } else {
     ErrorMessage();
   }
@@ -153,7 +153,7 @@ function fillInAddress_5() {
         document.cookie = homecookie + ';' + path;
       }
     }
-    window.location.assign("https://zefir.fr/offre/demande");
+    window.location.assign("https://zefir.fr/offre/demande/v2");
   } else {
     ErrorMessage();
   }
